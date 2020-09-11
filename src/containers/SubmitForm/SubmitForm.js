@@ -11,7 +11,8 @@ class SubmitForm extends Component{
         this.submitHandler = this.submitHandler.bind(this);
         this.state = {
             name: '',
-            date: null
+            date: null,
+            alert: false
         };
     }
     changeHandler(event) {
@@ -22,8 +23,7 @@ class SubmitForm extends Component{
     submitHandler() {
         if(this.state.name && this.state.date){
             this.props.onAddTodo(this.state.name, this.state.date);
-        } else {
-            alert("ENTER A VALID TITLE AND DATE FOR TODO YOU WANT TO ADD IT!");
+            this.setState({alert: true});
         }
     }
 
@@ -32,22 +32,30 @@ class SubmitForm extends Component{
     }
 
     render() {
+        const {todosss, error} = this.props;
+
         let listItems;
-        if(this.props.todosss){
-             listItems = this.props.todosss.map(item =>
+        if(todosss){
+             listItems = todosss.map(item =>
                 <li className={classes.ListItem} key={item.id}>Task Name: {item.name}, Date: {item.date}</li>
             )
         }
         return(
-            <div>
+            <div className={classes.MainDiv}>
+                <h3>Add ToDo </h3>
                 <form className={classes.FormClass}>
+                    <label>ToDo Title:</label>
                     <input name={"name"} type={"text"} className={classes.Input} onChange={this.changeHandler} placeholder={"Add To Do Item"}  />
+                    <label>Due Date:</label>
                     <input name={"date"} type={"date"} className={classes.Input} onChange={this.changeHandler} placeholder={"Due Date"}  />
-                    <Button btnType={"Success"} clicked={this.submitHandler}>Submit</Button>
+                    <Button disabled={!this.state.name || !this.state.date} btnType={"Success"} clicked={this.submitHandler}>Submit</Button>
                 </form>
-                <ul>
-                    {listItems}
-                </ul>
+                {this.state.alert && <div className={classes.AlertS}>YOUR TODO WAS ADDED!</div>}
+                <div className={classes.List}>
+                    <ul>
+                        {error ?  <div className={classes.AlertF}>{error.message}</div>: listItems}
+                    </ul>
+                </div>
             </div>
         )
     }
@@ -56,7 +64,8 @@ class SubmitForm extends Component{
 
 const mapStateToProps = state => {
     return {
-        todosss: state.todos
+        todosss: state.todos,
+        error: state.error
     }
 };
 

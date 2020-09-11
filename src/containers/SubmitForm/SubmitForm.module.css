@@ -1,32 +1,68 @@
 .FormClass {
-    margin: 90px 10% 0;
+    margin: auto;
     padding: 10px;
+    flex-flow: column;
+    display: flex;
+    width: 60%;
+    box-shadow: #00557b 2px 1px;
+    border-radius: 6px;
+    border: black solid 1px;
+}
+
+.MainDiv {
+    margin: 10px 10% 0;
     flex-flow: column;
     display: flex;
     width: 80%;
     height: 40%;
-    box-shadow: #00557b 2px 1px;
-    border-radius: 6px;
-    border: black solid 1px;
+}
+
+.MainDiv .Input, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+.MainDiv .List {
+    justify-content: center;
     text-align: center;
+    border-radius: 5px;
+    border: black solid 1px;
+    box-shadow: #00557b 2px 1px;
+    margin: 30px auto;
+    width: 100%;
 }
-
-.MainDiv {
-    margin: 90px 10% 0;
-    padding: 10px;
-    flex-flow: column;
-    display: flex;
-    width: 70%;
-    height: 40%;
-}
-
-.MainDiv .Input {
-    margin: 30px;
-    height: 40px;
-}
-.ListItem{
+.MainDiv .List .ListItem{
     box-shadow: salmon 0.5px 1px;
     list-style: none;
     font-weight: bold;
     margin-bottom: 15px;
+    width: 90%;
+}
+
+.AlertS {
+    background-color: green;
+    color: white;
+    box-shadow: #00557b 2px 1px;
+    border-radius: 5px;
+    border: black solid 1px;
+    text-align: center;
+    height: 30px;
+    margin-top: 10px;
+    padding-top: 6px;
+}
+
+.AlertF {
+    background-color: red;
+    color: white;
+    box-shadow: #00557b 2px 1px;
+    border-radius: 5px;
+    border: black solid 1px;
+    text-align: center;
+    height: 30px;
+    margin-top: 10px;
+    padding-top: 6px;
 }

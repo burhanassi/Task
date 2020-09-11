@@ -6,6 +6,7 @@ class Button extends Component {
         return(
             <button
                 type={"button"}
+                disabled={this.props.disabled}
                 onClick={this.props.clicked}
                 className={[classes.Button, classes[this.props.btnType]].join(' ')}>
                 {this.props.children}

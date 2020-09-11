@@ -44,8 +44,8 @@
     .NavItem a:hover,
     .NavItem a:active,
     .NavItem a.active {
-        background-color: #e0f2f1;
-        border-bottom: 4px solid #00897b;
+        font-weight: bolder;
         color: black;
+        text-decoration: underline;
     }
 }
